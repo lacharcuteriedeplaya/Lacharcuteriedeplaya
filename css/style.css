@@ -470,15 +470,23 @@ img {
 }
 
 .service-card {
-    padding: var(--spacing-md);
-    border-radius: 4px;
+    padding: 3rem 2rem;
+    border-radius: 0px;
     transition: var(--transition-smooth);
 }
 
-.service-card:hover {
-    transform: translateY(-10px);
-    background: rgba(255,255,255,0.05);
-    border-color: rgba(197, 168, 128, 0.3);
+.luxury-card {
+    background: #000000;
+    border: 1px solid var(--color-gold);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.luxury-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(197, 168, 128, 0.15);
 }
 
 .service-icon {
