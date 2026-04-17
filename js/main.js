@@ -41,7 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const translations = [
         { es: "Bodas y Eventos", en: "Weddings & Events" },
         { es: "Nosotros", en: "About Us" },
+        { es: "Nuestra Galería", en: "Our Gallery" },
+        { es: "Galería", en: "Gallery" },
         { es: "Contacto", en: "Contact" },
+        { es: "MOMENTOS CAPTURADOS DE NUESTRAS HERMOSAS PRESENTACIONES EN EL CARIBE.", en: "MOMENTS CAPTURED FROM OUR BEAUTIFUL PRESENTATIONS IN THE CARIBBEAN." },
         { es: "Home", en: "Home" },
         { es: "Arte Gastronómico en el ", en: "Gastronomic Art in " },
         { es: "Paraíso", en: "Paradise" },
@@ -104,16 +107,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
             let node;
             while (node = walker.nextNode()) {
-                let text = node.nodeValue;
-                if (text.trim() === "") continue;
+                if (node.nodeValue.trim() === "") continue;
 
                 translations.forEach(t => {
-                    // We only replace exact matches with padded boundaries if needed, but since we are iterating 
-                    // full strings it usually works just with includes/replace.
-                    if (targetLang === "en" && text.includes(t.es)) {
-                        node.nodeValue = node.nodeValue.replace(t.es, t.en);
-                    } else if (targetLang === "es" && text.includes(t.en)) {
-                        node.nodeValue = node.nodeValue.replace(t.en, t.es);
+                    let currentText = node.nodeValue;
+                    if (targetLang === "en" && currentText.includes(t.es)) {
+                        node.nodeValue = currentText.replace(t.es, t.en);
+                    } else if (targetLang === "es" && currentText.includes(t.en)) {
+                        node.nodeValue = currentText.replace(t.en, t.es);
                     }
                 });
             }
